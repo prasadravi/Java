@@ -1,0 +1,63 @@
+str='good moring'
+l=[]
+for i in str:
+    l.append(i)
+print(l)
+
+
+t=['even']
+for x in range(1,3):
+    if (x%2==0):
+        print(t) 
+    else :
+        print('odd')
+
+
+        set_a={'siddu','gopi','prasad'}
+        set_b={'mani','ajay'}
+        print(set_a)
+
+
+        set_a={'siddu','gopi','prasad'}
+        set_b={'mani','ajay'}
+        result=set_a.union(set_b)
+        set_a.remove('siddu')
+        set_b.discard('teja')
+        print(set_a)
+        print(set_b)
+
+
+
+
+
+set={'1','23','3','4'}
+set_1={'1','3','4'}
+set.update(set_1)
+print(set_1)
+
+
+set_a={'1','4','5'}
+set_b={'2','4','4'}
+print(set_a.symmetric_difference(set_b))
+copied_set=set_a.copy()
+print('copied set:',set_b)
+
+
+import random
+seat=[]
+for i in range(3):
+    line=()
+for i in range(6):
+    rand=random.randrange(0,2)
+    line.append(rand)
+    seat.append(line)
+available=0
+for i in range(3):
+    for i in range(6):
+        print(seat[i][j],'',end='')
+        if seat[i][j]==0:
+            available+=1
+    print()
+print('the available seats are',available)
+
+

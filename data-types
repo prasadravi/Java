@@ -1,0 +1,28 @@
+import pandas as pd
+from sklearn.neighbors import NearestNeighbors
+
+# Sample dataset: user-item purchase history (rows: users, columns: items)
+data = {
+    'user_id': [1, 2, 3, 4],
+    'item_1': [1, 0, 1, 0],
+    'item_2': [1, 1, 0, 0],
+    'item_3': [0, 1, 1, 0],
+    'item_4': [0, 0, 1, 1],
+}
+
+# Convert to DataFrame
+df = pd.DataFrame(data).set_index('user_id')
+
+# Collaborative filtering using k-nearest neighbors
+model = NearestNeighbors(metric='cosine', algorithm='brute')
+model.fit(df)
+
+# Recommend items for a given user
+user_index = 0  # User 1 in this example
+distances, indices = model.kneighbors([df.iloc[user_index]], n_neighbors=3)
+
+# Display recommended items
+print(f"Recommendations for User {user_index + 1}:")
+for i in range(1, len(indices.flatten())):
+    neighbor_index = indices.flatten()[i]
+    print(f"User {neighbor_index + 1}'s purchases may interest User {user_index + 1}")
